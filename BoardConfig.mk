@@ -35,7 +35,7 @@ USE_CAMERA_STUB := true
 # Display
 
 # EGL
-# BOARD_EGL_CFG := device/TabletExpress/X10/egl/egl.cfg
+BOARD_EGL_CFG := device/TabletExpress/X10/egl/egl.cfg
 
 # Kernel
 TARGET_PREBUILT_KERNEL := device/TabletExpress/X10/kernel
@@ -53,6 +53,7 @@ BOARD_CACHEIMAGE_FILE_SYSTEM_TYPE := ext4
 BOARD_FLASH_BLOCK_SIZE := 131072
 BOARD_HAS_SDCARD_INTERNAL := true
 TARGET_USERIMAGES_USE_EXT4 := true
+TARGET_NO_RADIOIMAGE := true
 
 # Platform
 TARGET_BOARD_PLATFORM := octopus
