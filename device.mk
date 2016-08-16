@@ -18,6 +18,24 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/audio/audio_effects.conf:system/vendor/etc/audio_effects.conf \
     $(LOCAL_PATH)/audio/audio_policy.conf:system/etc/audio_policy.conf
 
+# Boot Ramdisk
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/root/config_mem.ini:root/config_mem.ini \
+    $(LOCAL_PATH)/root/disp.ko:root/disp.ko \
+    $(LOCAL_PATH)/root/fstab.sun8i:root/fstab.sun8i \
+    $(LOCAL_PATH)/root/gslX680new.ko:root/gslX680new.ko \
+    $(LOCAL_PATH)/root/gt9xxf_ts.ko:root/gt9xxf_ts.ko \
+    $(LOCAL_PATH)/root/init.rc:root/init.rc \
+    $(LOCAL_PATH)/root/init.recovery.sun8i.rc:root/init.recovery.sun8i.rc \
+    $(LOCAL_PATH)/root/init.sun8i.common.rc:root/init.sun8i.common.rc \
+    $(LOCAL_PATH)/root/init.sun8i.rc:root/init.sun8i.rc \
+    $(LOCAL_PATH)/root/init.sun8i.usb.rc:root/init.sun8i.usb.rc \
+    $(LOCAL_PATH)/root/nand.ko:root/nand.ko \
+    $(LOCAL_PATH)/root/sunxi_tr.ko:root/sunxi_tr.ko \
+    $(LOCAL_PATH)/root/sw-device.ko:root/sw-device.ko \
+    $(LOCAL_PATH)/root/ueventd.rc:root/ueventd.rc \
+    $(LOCAL_PATH)/root/ueventd.sun8i.rc:root/ueventd.sun8i.rc
+
 # RIL
 PRODUCT_COPY_FILES += \
    $(LOCAL_PATH)/configs/libsoftwinner-ril-5.0.so:system/lib64/libsoftwinner-ril-5.0.so
