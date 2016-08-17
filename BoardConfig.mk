@@ -27,13 +27,14 @@ AUDIO_FEATURE_ENABLED_MULTI_VOICE_SESSIONS := true
 AUDIO_FEATURE_ENABLED_NEW_SAMPLE_RATE := true
 AUDIO_FEATURE_ENABLED_USBAUDIO := true
 AUDIO_FEATURE_LOW_LATENCY_PRIMARY := true
-BOARD_USES_ALSA_AUDIO := true
+BOARD_USES_ALSA_AUDIO := false
 BOARD_SUPPORTS_SOUND_TRIGGER := true
 
 # Bluetooth
 BOARD_HAS_BLUETOOTH := true
 
 # Bootloader
+BOARD_USES_UBOOT := true
 TARGET_BOOTLOADER_BOARD_NAME := exdroid
 TARGET_NO_BOOTLOADER := true
 
@@ -52,10 +53,12 @@ BOARD_EGL_CFG := $(LOCAL_PATH)/egl/egl.cfg
 
 # Kernel
 TARGET_PREBUILT_KERNEL := $(LOCAL_PATH)/kernel
+BOARD_KERNEL_IMAGE_NAME := uImage
 BOARD_KERNEL_CMDLINE := boot_type=0 disp_para=100 fb_base=0x0 config_size=53088 androidboot.serialno=00000000000000000000 androidboot.hardware=sun8i enforcing=1 console=ttyS0,115200 root=/dev/system init=/init vmalloc=384M ion_cma_list=120m,176m,512m loglevel=4 partitions=bootloader@nanda:env@nandb:boot@nandc:system@nandd:misc@nande:recovery@nandf:cache@nandg:metadata@nandh:private@nandi:alog@nandj:UDISK@nandk
 # OEM uses non-standard offsets
-# BOARD_CUSTOM_BOOTIMG_MK := $(LOCAL_PATH)/mkbootimg
 BOARD_MKBOOTIMG_ARGS := --base 40000000 --pagesize 2048 --kernel_offset 00008000 --ramdisk_offset 01000000 --tags_offset 00000100
+
+KERNEL_OBJ := "usr"
 
 # Lights
 TARGET_PROVIDES_LIBLIGHT := true

@@ -26,6 +26,7 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/root/config_mem.ini:root/config_mem.ini \
     $(LOCAL_PATH)/root/disp.ko:root/disp.ko \
     $(LOCAL_PATH)/root/fstab.sun8i:root/fstab.sun8i \
+    $(LOCAL_PATH)/root/init:root/init \
     $(LOCAL_PATH)/root/init.common.rc/:root/init.common.rc \
     $(LOCAL_PATH)/root/init.environ.rc:root/init.environ.rc \
     $(LOCAL_PATH)/root/init.rc:root/init.rc \
@@ -35,7 +36,6 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/root/init.sun8i.usb.rc:root/init.sun8i.usb.rc \
     $(LOCAL_PATH)/root/nand.ko:root/nand.ko \
     $(LOCAL_PATH)/root/sunxi_tr.ko:root/sunxi_tr.ko \
-    $(LOCAL_PATH)/root/sw-device.ko:root/sw-device.ko \
     $(LOCAL_PATH)/root/ueventd.rc:root/ueventd.rc \
     $(LOCAL_PATH)/root/ueventd.sun8i.rc:root/ueventd.sun8i.rc
 
