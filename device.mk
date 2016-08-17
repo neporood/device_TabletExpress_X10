@@ -34,6 +34,9 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/root/init.sun8i.common.rc:root/init.sun8i.common.rc \
     $(LOCAL_PATH)/root/init.sun8i.rc:root/init.sun8i.rc \
     $(LOCAL_PATH)/root/init.sun8i.usb.rc:root/init.sun8i.usb.rc \
+    $(LOCAL_PATH)/root/init.trace.rc:root/init.trace.rc \
+    $(LOCAL_PATH)/root/init.usb.rc:root/init.usb.rc \
+    $(LOCAL_PATH)/root/init.zygote32.rc:root/init.zygote32.rc \
     $(LOCAL_PATH)/root/nand.ko:root/nand.ko \
     $(LOCAL_PATH)/root/sunxi_tr.ko:root/sunxi_tr.ko \
     $(LOCAL_PATH)/root/ueventd.rc:root/ueventd.rc \
