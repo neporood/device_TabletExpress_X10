@@ -5,9 +5,9 @@ $(call inherit-product, vendor/TabletExpress/X10/X10-vendor-blobs.mk)
 LOCAL_PATH := device/TabletExpress/X10
 
 # Screen density
-PRODUCT_AAPT_CONFIG := normal
-PRODUCT_AAPT_PREF_CONFIG := 160dpi
-PRODUCT_AAPT_PREBUILT_DPI := 160dpi xxhdpi xhdpi hdpi
+# PRODUCT_AAPT_CONFIG := normal
+# PRODUCT_AAPT_PREF_CONFIG := 160dpi
+# PRODUCT_AAPT_PREBUILT_DPI := 160dpi xxhdpi xhdpi hdpi
 
 # Boot animation
 TARGET_SCREEN_HEIGHT := 768
@@ -20,11 +20,14 @@ PRODUCT_COPY_FILES += \
 
 # Boot Ramdisk
 PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/root/res/images/charger/battery_fail.png:root/res/images/charger/battery_fail.png \
+    $(LOCAL_PATH)/root/res/images/charger/battery_scale.png:root/res/images/charger/battery_scale.png \
+    $(LOCAL_PATH)/root/sbin/init_parttion.sh:root/sbin/init_parttion.sh \
     $(LOCAL_PATH)/root/config_mem.ini:root/config_mem.ini \
     $(LOCAL_PATH)/root/disp.ko:root/disp.ko \
     $(LOCAL_PATH)/root/fstab.sun8i:root/fstab.sun8i \
-    $(LOCAL_PATH)/root/gslX680new.ko:root/gslX680new.ko \
-    $(LOCAL_PATH)/root/gt9xxf_ts.ko:root/gt9xxf_ts.ko \
+    $(LOCAL_PATH)/root/init.common.rc/:root/init.common.rc \
+    $(LOCAL_PATH)/root/init.environ.rc:root/init.environ.rc \
     $(LOCAL_PATH)/root/init.rc:root/init.rc \
     $(LOCAL_PATH)/root/init.recovery.sun8i.rc:root/init.recovery.sun8i.rc \
     $(LOCAL_PATH)/root/init.sun8i.common.rc:root/init.sun8i.common.rc \
