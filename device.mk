@@ -4,19 +4,14 @@ $(call inherit-product, vendor/TabletExpress/X10/X10-vendor-blobs.mk)
 
 LOCAL_PATH := device/TabletExpress/X10
 
-# Screen density
-# PRODUCT_AAPT_CONFIG := normal
-# PRODUCT_AAPT_PREF_CONFIG := 160dpi
-# PRODUCT_AAPT_PREBUILT_DPI := 160dpi xxhdpi xhdpi hdpi
-
-# Boot animation
-TARGET_SCREEN_HEIGHT := 768
-TARGET_SCREEN_WIDTH := 1366
-
 # Audio configuration
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/audio/audio_effects.conf:system/vendor/etc/audio_effects.conf \
     $(LOCAL_PATH)/audio/audio_policy.conf:system/etc/audio_policy.conf
+
+# Boot Animation
+TARGET_SCREEN_HEIGHT := 768
+TARGET_SCREEN_WIDTH := 1366
 
 # Boot Ramdisk
 PRODUCT_COPY_FILES += \
@@ -41,6 +36,12 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/root/sunxi_tr.ko:root/sunxi_tr.ko \
     $(LOCAL_PATH)/root/ueventd.rc:root/ueventd.rc \
     $(LOCAL_PATH)/root/ueventd.sun8i.rc:root/ueventd.sun8i.rc
+
+# Properties
+ADDITIONAL_DEFAULT_PROPERTIES += \
+    ro.adb.secure=0 \
+    ro.secure=0 \
+    ro.debuggable=1
 
 # RIL
 PRODUCT_COPY_FILES += \

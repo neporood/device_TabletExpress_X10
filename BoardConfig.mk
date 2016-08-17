@@ -15,6 +15,7 @@ TARGET_CPU_SMP := true
 BOARD_USES_SECURE_SERVICES := true
 TARGET_USE_NEON_OPTIMIZATION := true
 TARGET_USES_ION := true
+TARGET_IS_64_BIT := false
 
 # Assert
 TARGET_OTA_ASSERT_DEVICE := X10
@@ -49,15 +50,13 @@ BOARD_EGL_CFG := $(LOCAL_PATH)/egl/egl.cfg
 TARGET_PREBUILT_KERNEL := $(LOCAL_PATH)/kernel
 BOARD_KERNEL_IMAGE_NAME := uImage
 BOARD_KERNEL_CMDLINE := boot_type=0 disp_para=100 fb_base=0x0 config_size=53088 androidboot.serialno=00000000000000000000 androidboot.hardware=sun8i enforcing=1 console=ttyS0,115200 root=/dev/system init=/init vmalloc=384M ion_cma_list=120m,176m,512m loglevel=4 partitions=bootloader@nanda:env@nandb:boot@nandc:system@nandd:misc@nande:recovery@nandf:cache@nandg:metadata@nandh:private@nandi:alog@nandj:UDISK@nandk
-# OEM uses non-standard offsets
-BOARD_MKBOOTIMG_ARGS := --base 40000000 --pagesize 2048 --kernel_offset 00008000 --ramdisk_offset 01000000 --tags_offset 00000100
 
-KERNEL_OBJ := "usr"
+BOARD_MKBOOTIMG_ARGS := --base 40000000 --pagesize 2048 --kernel_offset 00008000 --ramdisk_offset 01000000 --tags_offset 00000100
 
 # Lights
 TARGET_PROVIDES_LIBLIGHT := true
 
-#Overrides
+# Overrides
 PRODUCT_PROPERTY_OVERRIDES += \
 	ro.kernel.android.checkjni=0
 
@@ -89,11 +88,8 @@ TARGET_USE_CUSTOM_LUN_FILE_PATH := "/sys/class/android_usb/android0/f_mass_stora
 
 # Wifi
 BOARD_WPA_SUPPLICANT_DRIVER := AWEXT
-# WIFI_DRIVER_MODULE_NAME := "wlan"
-# WIFI_DRIVER_MODULE_PATH := "/system/vendor/modules/wlan.ko"
 WPA_SUPPLICANT_VERSION := VER_0_8_X
 
 # inherit from the proprietary version
 -include vendor/TabletExpress/X10/X10-vendor-blobs.mk
 
-# To Do:
