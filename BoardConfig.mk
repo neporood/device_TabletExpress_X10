@@ -20,20 +20,15 @@ TARGET_USES_ION := true
 TARGET_OTA_ASSERT_DEVICE := X10
 
 # Audio
-AUDIO_FEATURE_ENABLED_ANC_HEADSET := true
-AUDIO_FEATURE_ENABLED_EXTERNAL_SPEAKER := true
-AUDIO_FEATURE_ENABLED_FLUENCE := true
-AUDIO_FEATURE_ENABLED_MULTI_VOICE_SESSIONS := true
-AUDIO_FEATURE_ENABLED_NEW_SAMPLE_RATE := true
-AUDIO_FEATURE_ENABLED_USBAUDIO := true
-AUDIO_FEATURE_LOW_LATENCY_PRIMARY := true
-BOARD_USES_ALSA_AUDIO := true
-BOARD_SUPPORTS_SOUND_TRIGGER := true
+HAVE_HTC_AUDIO_DRIVER := true
+BOARD_USES_GENERIC_AUDIO := true
+# CEDARX_CHIP_VERSION := 
 
 # Bluetooth
 BOARD_HAS_BLUETOOTH := true
 
 # Bootloader
+BOARD_USES_UBOOT := true
 TARGET_BOOTLOADER_BOARD_NAME := exdroid
 TARGET_NO_BOOTLOADER := true
 
@@ -48,17 +43,20 @@ TARGET_FORCE_HWC_FOR_VIRTUAL_DISPLAYS := true
 TARGET_USE_COMPAT_GRALLOC_ALIGN := true
 
 # EGL
-BOARD_EGL_CFG := device/TabletExpress/X10/egl/egl.cfg
+BOARD_EGL_CFG := $(LOCAL_PATH)/egl/egl.cfg
 
 # Kernel
-TARGET_PREBUILT_KERNEL := device/TabletExpress/X10/kernel
+TARGET_PREBUILT_KERNEL := $(LOCAL_PATH)/kernel
+BOARD_KERNEL_IMAGE_NAME := uImage
 BOARD_KERNEL_CMDLINE := boot_type=0 disp_para=100 fb_base=0x0 config_size=53088 androidboot.serialno=00000000000000000000 androidboot.hardware=sun8i enforcing=1 console=ttyS0,115200 root=/dev/system init=/init vmalloc=384M ion_cma_list=120m,176m,512m loglevel=4 partitions=bootloader@nanda:env@nandb:boot@nandc:system@nandd:misc@nande:recovery@nandf:cache@nandg:metadata@nandh:private@nandi:alog@nandj:UDISK@nandk
-# OEM uses non-standard offsets
-BOARD_CUSTOM_BOOTIMG_MK := $(LOCAL_PATH)/mkbootimg.mk
 BOARD_MKBOOTIMG_ARGS := --base 40000000 --pagesize 2048 --kernel_offset 00008000 --ramdisk_offset 01000000 --tags_offset 00000100
 
 # Lights
 TARGET_PROVIDES_LIBLIGHT := true
+
+# Overrides
+PRODUCT_PROPERTY_OVERRIDES += \
+	ro.kernel.android.checkjni=0
 
 # Partitions
 BOARD_BOOTIMAGE_PARTITION_SIZE := 16777216
@@ -77,22 +75,23 @@ TARGET_BOARD_PLATFORM := octopus
 TARGET_BOARD_PLATFORM_GPU := POWERVR-SGX-544MP
 
 # Recovery
-TARGET_RECOVERY_FSTAB := device/TabletExpress/X10/recovery/root/etc/recovery.fstab    
+TARGET_RECOVERY_FSTAB := $(LOCAL_PATH)/recovery/root/etc/recovery.fstab    
 
 # sepolicy
 BOARD_SEPOLICY_DIRS := \
-       device/TabletExpress/X10/sepolicy
+       $(LOCAL_PATH)/sepolicy
 
 # USB
 TARGET_USE_CUSTOM_LUN_FILE_PATH := "/sys/class/android_usb/android0/f_mass_storage/lun/file"
 
 # Wifi
 BOARD_WPA_SUPPLICANT_DRIVER := AWEXT
-# WIFI_DRIVER_MODULE_NAME := "wlan"
-# WIFI_DRIVER_MODULE_PATH := "/system/vendor/modules/wlan.ko"
 WPA_SUPPLICANT_VERSION := VER_0_8_X
 
 # inherit from the proprietary version
 -include vendor/TabletExpress/X10/X10-vendor-blobs.mk
 
-# To Do:
+# Hack for building without kernel sources
+$(shell mkdir -p $(OUT)/obj/KERNEL_OBJ/usr)
+
+
