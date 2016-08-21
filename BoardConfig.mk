@@ -33,7 +33,8 @@ TARGET_BOOTLOADER_BOARD_NAME := exdroid
 TARGET_NO_BOOTLOADER := true
 
 # Camera
-USE_CAMERA_STUB := true
+# USE_CAMERA_STUB := true
+USE_DEVICE_SPECIFIC_CAMERA := true
 
 # Display & Video
 USE_OPENGL_RENDERER := true
