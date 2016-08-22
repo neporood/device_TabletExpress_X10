@@ -24,6 +24,17 @@ HAVE_HTC_AUDIO_DRIVER := true
 BOARD_USES_GENERIC_AUDIO := true
 # CEDARX_CHIP_VERSION := 
 
+# Bliss Settings
+# BLISS_STRICT := true
+BLISS_O3 := true
+BLISS_GRAPHITE := true
+# BLISS_KRAIT := true
+BLISS_PIPE := true
+TARGET_TC_ROM := 4.9-linaro
+TARGET_TC_KERNEL := 4.8-linaro
+TARGET_GCC_VERSION_EXP := $(TARGET_TC_ROM)
+TARGET_KERNEL_CUSTOM_TOOLCHAIN := $(TARGET_TC_KERNEL)
+
 # Bluetooth
 BOARD_HAS_BLUETOOTH := true
 
@@ -97,6 +108,7 @@ WPA_SUPPLICANT_VERSION := VER_0_8_X
 
 # inherit from the proprietary version
 -include vendor/TabletExpress/X10/X10-vendor-blobs.mk
+-include vendor/bliss/config/sm.mk
 
 # Hack for building without kernel sources
 $(shell mkdir -p $(OUT)/obj/KERNEL_OBJ/usr)
