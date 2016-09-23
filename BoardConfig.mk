@@ -3,7 +3,10 @@
 
 LOCAL_PATH := device/TabletExpress/X10
 
-BOARD_VENDOR := allwinner
+BOARD_VENDOR := allwinner 
+
+# libart fix
+ANDROID_COMMON_BUILD_MK := true
 
 # Architecture
 TARGET_ARCH := arm
