@@ -1,3 +1,6 @@
+# Hack for building without kernel sources
+$(shell mkdir -p $(OUT)/obj/KERNEL_OBJ/usr)
+
 $(call inherit-product, device/TabletExpress/X10/full_X10.mk)
 
 # Inherit from bliss vendor some common stuff
