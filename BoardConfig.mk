@@ -109,8 +109,3 @@ WPA_SUPPLICANT_VERSION := VER_0_8_X
 # inherit from the proprietary version
 -include vendor/TabletExpress/X10/X10-vendor-blobs.mk
 -include vendor/bliss/config/sm.mk
-
-# Hack for building without kernel sources
-$(shell mkdir -p $(OUT)/obj/KERNEL_OBJ/usr)
-
-
