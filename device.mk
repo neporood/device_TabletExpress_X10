@@ -1,3 +1,11 @@
+ifeq ($(TARGET_PREBUILT_KERNEL),)
+LOCAL_KERNEL := device/TabletExpress/X10/kernel
+else
+LOCAL_KERNEL := $(TARGET_PREBUILT_KERNEL)
+endif
+PRODUCT_COPY_FILES := \
+    $(LOCAL_KERNEL):kernel
+
 $(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
 
 $(call inherit-product, vendor/TabletExpress/X10/X10-vendor-blobs.mk)
