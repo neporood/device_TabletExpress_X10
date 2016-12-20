@@ -16,6 +16,11 @@ BOARD_USES_SECURE_SERVICES := true
 TARGET_USE_NEON_OPTIMIZATION := true
 TARGET_USES_ION := true
 
+#CM12 changes
+#ANDROID_COMMON_BUILD_MK := true
+#WITH_DEXPREOPT := true
+DISABLE_DEXPREOPT := true
+
 # Assert
 TARGET_OTA_ASSERT_DEVICE := X10
 
@@ -23,17 +28,6 @@ TARGET_OTA_ASSERT_DEVICE := X10
 HAVE_HTC_AUDIO_DRIVER := true
 BOARD_USES_GENERIC_AUDIO := true
 # CEDARX_CHIP_VERSION := 
-
-# Bliss Settings
-# BLISS_STRICT := true
-BLISS_O3 := true
-BLISS_GRAPHITE := true
-# BLISS_KRAIT := true
-BLISS_PIPE := true
-TARGET_TC_ROM := 4.9-linaro
-TARGET_TC_KERNEL := 4.8-linaro
-TARGET_GCC_VERSION_EXP := $(TARGET_TC_ROM)
-TARGET_KERNEL_CUSTOM_TOOLCHAIN := $(TARGET_TC_KERNEL)
 
 # Bluetooth
 BOARD_HAS_BLUETOOTH := true
@@ -60,18 +54,15 @@ BOARD_EGL_CFG := $(LOCAL_PATH)/egl/egl.cfg
 # Kernel
 TARGET_PREBUILT_KERNEL := $(LOCAL_PATH)/kernel
 BOARD_KERNEL_IMAGE_NAME := uImage
-BOARD_KERNEL_CMDLINE := boot_type=0 disp_para=100 fb_base=0x0 config_size=53088 androidboot.serialno=00000000000000000000 androidboot.selinux=permissive androidboot.hardware=sun8i enforcing=1 console=ttyS0,115200 root=/dev/system init=/init vmalloc=384M ion_cma_list=120m,176m,512m loglevel=4 partitions=bootloader@nanda:env@nandb:boot@nandc:system@nandd:misc@nande:recovery@nandf:cache@nandg:metadata@nandh:private@nandi:alog@nandj:UDISK@nandk
+BOARD_KERNEL_CMDLINE := boot_type=0 disp_para=100 fb_base=0x0 config_size=53088 androidboot.serialno=00000000000000000000 androidboot.hardware=sun8i androidboot.selinux=permissive console=ttyS0,115200 root=/dev/system init=/init vmalloc=384M ion_cma_list=120m,176m,512m loglevel=7 partitions=bootloader@nanda:env@nandb:boot@nandc:system@nandd:misc@nande:recovery@nandf:cache@nandg:metadata@nandh:private@nandi:alog@nandj:UDISK@nandk
 BOARD_MKBOOTIMG_ARGS := --base 40000000 --pagesize 2048 --kernel_offset 00008000 --ramdisk_offset 01000000 --tags_offset 00000100
-
-# libart patch
-ANDROID_COMMON_BUILD_MK := true
 
 # Lights
 TARGET_PROVIDES_LIBLIGHT := true
 
 # Overrides
 PRODUCT_PROPERTY_OVERRIDES += \
-	ro.kernel.android.checkjni=0
+	ro.kernel.android.checkjni=1
 
 # Partitions
 BOARD_BOOTIMAGE_PARTITION_SIZE := 16777216
@@ -95,9 +86,6 @@ TARGET_RECOVERY_FSTAB := $(LOCAL_PATH)/recovery/root/etc/recovery.fstab
 # sepolicy
 BOARD_SEPOLICY_DIRS := \
        $(LOCAL_PATH)/sepolicy
-       
-BOARD_SEPOLICY_UNION += \
-    module.te 
 
 # USB
 TARGET_USE_CUSTOM_LUN_FILE_PATH := "/sys/class/android_usb/android0/f_mass_storage/lun/file"
@@ -108,4 +96,8 @@ WPA_SUPPLICANT_VERSION := VER_0_8_X
 
 # inherit from the proprietary version
 -include vendor/TabletExpress/X10/X10-vendor-blobs.mk
--include vendor/bliss/config/sm.mk
+
+# Hack for building without kernel sources
+$(shell mkdir -p $(OUT)/obj/KERNEL_OBJ/usr)
+
+
